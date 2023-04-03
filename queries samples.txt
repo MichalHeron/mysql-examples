@@ -117,5 +117,47 @@ pralka		2513.8571
 telewizor	3274.0000
 
 @@@@@@@@@@@@@@@@@@@@@@@@@
+Łączenie tabel
+
+Jedna z metod nie do końca zalecana
+SELECT produkty.model, producenci.nazwa FROM produkty, producenci WHERE produkty.producent = producenci.id_producenta;
+
+INNER JOIN wycina wyniki gdzie nie może znaleźć części wspólnej
+LEFT/RIGHT JOIN - wskazuje wartość null jeżeli nie ma wspólnej części elfa lub prawa kolumna - łączenie lewostronne lub prawostronne
+SELECT produkty.model, producenci.nazwa FROM produkty INNER JOIN producenci ON produkty.producent = producenci.id_producenta;
+
+
+NATURAL JOIN musi mieć w dwóch tabelach taka sama nazwę kolumny dzięki któremu znajdzie część wspólną
+SELECT produkty.model, producenci.nazwa
+FROM produkty NATURAL JOIN producenci
+
+
+Result
+
+model	nazwa	
+U3000	Amica
+U3001	Amica
+G1000	Amica
+L100	Amica
+L105	Amica
+S-300	LG
+S-400	LG
+X-500	LG
+X-600	LG
+Z-700	LG
+EP-200	Samsung
+EP-200X	Samsung
+EP-300	Samsung
+EE-1000	Samsung
+EE-2000	Samsung
+EX-550	Samsung
+EZ-550	Samsung
+
+
+@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+
+
 
 
