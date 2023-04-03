@@ -40,3 +40,82 @@ PRALKA : EP-300 	3199
 TELEWIZOR : EE-1000 	3999
 
 @@@@@@@@@@@@@@@@@@@@@@@@@
+Funkcje grupujące - zwracają jedna wartość
+
+SELECT AVG(cena) FROM produkty WHERE producent = 1
+Zwraca średnia cen gdzie producent = 1
+SUM() - zwraca sumę rekordów
+COUNT() - zwraca ilość rekordów
+MIN() - zwraca najmniejszą wartość z wybranych rekordów kolumny
+MAX() - j.w. tylko najwieksza
+
+
+Result
+AVG(cena)
+2714.2353
+
+@@@@@@@@@@@@@@@@@@@@@@@@@
+
+SELECT kategoria, AVG(cena)AS srednia FROM produkty GROUP BY kategoria;
+
+Result
+
+kategoria	srednia	
+
+kuchenka	2049.5000
+
+lodówka		2837.5000
+
+pralka		2513.8571
+
+telewizor	3274.0000
+
+@@@@@@@@@@@@@@@@@@@@@@@@@
+
+SELECT producent, kategoria, AVG(cena)AS srednia FROM produkty GROUP BY kategoria, producent ORDER BY producent;
+
+Result
+
+producent	kategoria	srednia	
+
+1		pralka		2816.3333
+
+1		telewizor	4249.0000
+
+1		kuchenka	2100.0000
+
+1		lodówka		3500.0000
+
+2		pralka		2599.0000
+
+2		telewizor	2299.0000
+
+2		lodówka		2200.0000
+
+3		kuchenka	1999.0000
+
+3		lodówka		2825.0000
+	
+3		pralka		1975.0000
+
+@@@@@@@@@@@@@@@@@@@@@@@@@
+
+HAVING powinnismy uzależniać tylko od funkcji grupujących. HAVING działa na pogrupowanych partiach danych, natomiast WHERE powinna działać selektywnie na kazdy rekord z osobna
+
+SELECT kategoria, AVG(cena)AS srednia FROM produkty GROUP BY kategoria HAVING AVG(cena) >1500;
+
+Result
+
+kategoria	srednia	
+	
+kuchenka 	2049.5000
+
+lodówka		2837.5000
+
+pralka		2513.8571
+
+telewizor	3274.0000
+
+@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
