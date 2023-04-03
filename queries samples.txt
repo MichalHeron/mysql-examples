@@ -1,0 +1,42 @@
+Queires samples
+
+SELECT * FROM sth WHERE sth AND/OR
+IN() przekazujemy co ma się znajdować wewnątrz wyszukiwania
+<> != 
+
+@@@@@@@@@@@@@@@@@@@@@@@@@
+
+SELECT * FROM produkty WHERE model LIKE('_P%') ORDER BY model DESC;
+
+_ dowolny pojedynczy znak
+% dowolny znak
+
+Result 
+
+id_produktu	producent	model	kategoria	cena	
+	
+3		1		EP-300	pralka		3199
+
+2		1		EP-200X	pralka		2750
+
+1		1		EP-200	pralka		2500
+	
+
+@@@@@@@@@@@@@@@@@@@@@@@@@
+
+SELECT DISTINCT concat(upper(kategoria), ' : ', model) AS produkt, cena FROM produkty LIMIT 4;
+
+DISTINCT - nie pokazuje kilku takich samych wyników
+Result
+
+produkt			cena	
+
+PRALKA : EP-200 	2500
+	
+PRALKA : EP-200X 	2750
+	
+PRALKA : EP-300 	3199
+	
+TELEWIZOR : EE-1000 	3999
+
+@@@@@@@@@@@@@@@@@@@@@@@@@
