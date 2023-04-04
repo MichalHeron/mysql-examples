@@ -1,4 +1,4 @@
-Queires samples
+Queires samples SELECT
 
 SELECT * FROM sth WHERE sth AND/OR
 IN() przekazujemy co ma się znajdować wewnątrz wyszukiwania
