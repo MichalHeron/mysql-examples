@@ -11,6 +11,8 @@ SELECT * FROM produkty WHERE model LIKE('_P%') ORDER BY model DESC;
 _ dowolny pojedynczy znak
 % dowolny znak
 
+Jeśli chcemy posortować po kliku kolumnach rozdzielamy przecinkiem: ORDER BY model DESC, cena;
+
 Result 
 
 id_produktu	producent	model	kategoria	cena	

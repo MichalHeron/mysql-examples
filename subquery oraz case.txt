@@ -1,0 +1,103 @@
+Podzapytania 
+Można używać nie tylko w SELECT ale także w INSERT UPDATE DELETE
+
+
+
+SELECT id_produktu,  model,  cena FROM produkty WHERE cena > (SELECT AVG(cena) AS srednia FROM produkty ) ORDER by cena DESC
+
+Podzapytanie musi zwracać jedna wartość inaczej wyrzuci błąd
+
+
+id_produktu	model		cena 	
+
+5		EE-2000		4499
+
+4		EE-1000		3999
+
+7		EZ-550		3500
+
+3		EP-300		3199
+
+17		L105		3150
+
+8		S-300		2999
+
+2		EP-200X		2750
+
+
+
+
+SELECT id_produktu, model, cena FROM produkty WHERE cena > (SELECT cena FROM produkty WHERE id_produktu = 1 ) ORDER by cena DESC;
+
+
+
+@@@@@@@@@@@@@@@@@@@@@@@
+
+SELECT model FROM (SELECT * FROM produkty) AS produkty;
+Każde podzapytanie za from musi posiadać swój alias (AS)
+
+model	
+EE-1000
+EE-2000
+EP-200
+EP-200X
+EP-300
+EX-550
+EZ-550
+G1000
+L100
+L105
+S-300
+S-400
+U3000
+U3001
+X-500
+X-600
+Z-700
+
+@@@@@@@@@@@@@@@@@@@@@@
+
+Instrukcje warunkowe CASE
+Powinno się nadać alias bo nazwa będzie wyglądać jak cale zapytanie 
+
+SELECT model, cena, CASE WHEN cena <= 2000 THEN 'TANIO' WHEN cena >= 3000 THEN 'DROGO' ELSE 'ŚREDNIO' END AS cena_własna FROM produkty ORDER BY cena_własna DESC, cena;
+
+Result
+
+model	cena 	cena_własna
+
+U3000	1550	TANIO
+
+X-500	1999	TANIO
+
+G1000	1999	TANIO
+
+EX-550	2100	ŚREDNIO
+
+S-400	2199	ŚREDNIO
+
+Z-700	2200	ŚREDNIO
+
+U3001	2400	ŚREDNIO
+
+EP-200	2500	ŚREDNIO
+
+L100	2500	ŚREDNIO
+
+X-600	2599	ŚREDNIO
+
+EP-200X	2750	ŚREDNIO
+
+S-300	2999	ŚREDNIO
+
+L105	3150	DROGO
+
+EP-300	3199	DROGO
+
+EZ-550	3500	DROGO
+
+EE-1000	3999	DROGO
+
+EE-2000	4499	DROGO
+
+
