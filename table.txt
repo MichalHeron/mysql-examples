@@ -1,0 +1,8 @@
+CREATE TABLE nazwa
+(Po przecinku nazwy kolumn)
+
+DROP TABLE nazwa - usuwanie tabeli (jeszcze do odzyskania)
+
+COMMIT usuwa trwale
+
+
